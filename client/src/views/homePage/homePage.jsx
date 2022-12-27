@@ -1,12 +1,18 @@
 import React from "react";
 import Header from "../../components/header/header";
-import "./homePage.scss";
+import Slider from "../../components/slider/slider";
+import Footer from "../../components/footer/footer";
+import CdCounter from "../../components/countUp/countUp";
+import CompanySection from "../../components/companySection/companySection";
+import "./homePage.css";
 const HomePage = () => {
   return (
     <>
-    
       <Header />
-    <p>abc sdasdas</p>
+      <Slider />
+      <CdCounter />
+      <CompanySection/>
+      <Footer/>
     </>
   );
 };

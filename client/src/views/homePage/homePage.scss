@@ -1,4 +1,2 @@
-$abc:red;
-p{
-    color:$abc;
-}
+@use "../../assets/sass/mixin" as mixin;
+@use "../../assets/sass/var" as variable;

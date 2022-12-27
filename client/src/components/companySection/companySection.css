@@ -1,0 +1,12 @@
+.company-section, .feature-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px;
+}
+
+.feature-section {
+  border-top: 1px solid rgb(230, 226, 226);
+  background-color: rgb(245, 240, 234);
+}/*# sourceMappingURL=companySection.css.map */

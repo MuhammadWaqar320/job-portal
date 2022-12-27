@@ -1,0 +1,19 @@
+.job-section {
+  padding: 40px 10px;
+}
+.job-section .title {
+  font-family: initial;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.job-section .container .job-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.job-section .container .card-class {
+  border: 1px solid silver;
+}/*# sourceMappingURL=jobComponent.css.map */

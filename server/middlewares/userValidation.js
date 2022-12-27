@@ -23,7 +23,7 @@ const userValidationFun = () => {
     .withMessage("Phone Number should be valid format");
   const checkRole = body("role")
     .custom((role) => {
-      if (role == USER_TYPE.ADMIN || role == USER_TYPE.CUSTOMER) {
+      if (role == USER_TYPE.ADMIN || role == USER_TYPE.JOBSEEKER) {
         return true;
       }
       return false;

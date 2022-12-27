@@ -1,225 +1,88 @@
-import React from 'react';
-import { useState } from 'react';
-
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import React from "react";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import logo from "../../assets/images/logo1.png";
+import { Link } from "react-router-dom";
+import "./header.css";
+import Login from "../login/login";
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-    return (
-      <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 border-4 shadow-md">
-        <div class="relative flex items-center justify-between">
-          <a
-            href="/"
-            aria-label="InveXup"
-            title="InveXup"
-            class="inline-flex items-center"
+  const [modalShow, setModalShow] = React.useState(false);
+
+  return (
+    <Navbar expand="lg" className="nav-bar">
+      <Container fluid className="nav-bar-container">
+        <Navbar.Brand>
+          <Link to="/">
+            <img src={logo} className="nav-bar-logo" />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll" className="nav-collapse-menu">
+          <Nav
+            className="me-auto my-2 my-lg-0 m-auto nav-menu"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
           >
-            <svg
-              class="w-8 text-deep-purple-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
+            <Nav.Link href="#action1" className="nav-bar-menu-list">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </Nav.Link>
+            <Nav.Link href="#action2" className="nav-bar-menu-list">
+              <Link to="/about" className="nav-link">
+                About Us
+              </Link>
+            </Nav.Link>
+            <Nav.Link href="#action4" className="nav-bar-menu-list">
+              <Link to="/job" className="nav-link">
+                All Jobs
+              </Link>
+            </Nav.Link>
+          </Nav>
+          <Button className="nav-login-btn" onClick={() => setModalShow(true)}>
+            Login
+          </Button>
+          <Dropdown className="nav-bar-dropdown">
+            <Dropdown.Toggle
+              variant="success"
+              id="dropdown-basic"
+              className="nav-bar-dropdown-btn"
             >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              InveXup
-            </span>
-          </a>
-          <ul class="flex items-center hidden space-x-8 lg:flex">
-            <li>
-              <a
-                href="/"
-                aria-label="Our product"
-                title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              Register As
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="nav-bar-dropdown-menu">
+              <Dropdown.Item
+                href="#/action-1"
+                className="nav-bar-dropdown-menu-item"
               >
-                Product
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                aria-label="Our product"
-                title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Features
-              </a>
-            </li>
-
-            <li>
-              <div class="dropdown inline-block relative">
-                <button class="bg-white text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-                    <span class="mr-1">Dropdown</span>
-                </button>
-                <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 ">
-                    <li class=""><a class="rounded  bg-gray-100 hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap" href="/">One</a></li>
-                    <li class=""><a class="rounded bg-gray-100 hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap" href="/">Two</a></li>
-                    <li class=""><a class="rounded bg-gray-100 hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap" href="/">Three is the magic number</a></li>
-                </ul>
-               </div>
-            </li>
-            
-            <li>
-              <a
-                href="/"
-                aria-label="About us"
-                title="About us"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                About us
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Sign up
-              </a>
-            </li>
-          </ul>
-          <div class="lg:hidden">
-            <button
-              aria-label="Open Menu"
-              title="Open Menu"
-              class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-              onClick={() => setIsMenuOpen(true)}
-            >
-              <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-                />
-                <path
-                  fill="currentColor"
-                  d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-                />
-                <path
-                  fill="currentColor"
-                  d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-                />
-              </svg>
-            </button>
-            {isMenuOpen && (
-              <div class="absolute top-0 left-0 w-full">
-                <div class="p-5 bg-white border rounded shadow-sm">
-                  <div class="flex items-center justify-between mb-4">
-                    <div>
-                      <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        class="inline-flex items-center"
-                      >
-                        <svg
-                          class="w-8 text-deep-purple-accent-400"
-                          viewBox="0 0 24 24"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeMiterlimit="10"
-                          stroke="currentColor"
-                          fill="none"
-                        >
-                          <rect x="3" y="1" width="7" height="12" />
-                          <rect x="3" y="17" width="7" height="6" />
-                          <rect x="14" y="1" width="7" height="6" />
-                          <rect x="14" y="11" width="7" height="12" />
-                        </svg>
-                        <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                          Company
-                        </span>
-                      </a>
-                    </div>
-                    <div>
-                      <button
-                        aria-label="Close Menu"
-                        title="Close Menu"
-                        class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-                          <path
-                            fill="currentColor"
-                            d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <nav>
-                    <ul class="space-y-4">
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Product
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Features
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Pricing
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="About us"
-                          title="About us"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          About us
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
-                        >
-                          Sign up
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  
-
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to="/registerUser"
+                >
+                  {" "}
+                  A User
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to="/registerCompany"
+                >
+                  {" "}
+                  A Company
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Login show={modalShow} onHide={() => setModalShow(false)} />
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 export default Header;

@@ -1,4 +1,4 @@
-const keys=require("./keys")
+const keys = require("./keys");
 module.exports = {
   development: {
     username: keys.development.username,
@@ -8,6 +8,7 @@ module.exports = {
     dialect: "mysql",
     seederStorage: "sequelize",
     seederStorageTableName: "SequelizeSeedData",
+    serverUrl: "http://localhost:8000",
   },
   test: {
     username: "root",
@@ -19,7 +20,7 @@ module.exports = {
   production: {
     username: keys.production.username,
     password: keys.production.password,
-    database:keys.production.database,
+    database: keys.production.database,
     host: keys.production.host,
     dialect: "mysql",
   },

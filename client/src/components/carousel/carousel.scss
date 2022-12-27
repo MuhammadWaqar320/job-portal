@@ -1,0 +1,11 @@
+.slider-img {
+  height: 540px;
+}
+@media screen and (max-width: 768px) {
+  .slider-img {
+    height: 180px;
+  }
+  .slider-content {
+    display: none;
+  }
+}

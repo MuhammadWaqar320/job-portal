@@ -1,0 +1,33 @@
+@mixin ToVerticalCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin ToHorizontalCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+@mixin ToVerticalAndHorizontalCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin BeforeContentMixin(
+  $content,
+  $bg,
+  $position,
+  $height,
+  $width,
+  $zIndex,
+  $opacity
+) {
+  content: $content;
+  background: $bg;
+  position: $position;
+  height: $height;
+  width: $width;
+  z-index: $zIndex;
+  opacity: $opacity;
+}

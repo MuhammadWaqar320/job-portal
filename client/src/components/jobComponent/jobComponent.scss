@@ -1,0 +1,21 @@
+@use "../../assets/sass/mixin" as mixin;
+@use "../../assets/sass/var" as var;
+.job-section {
+  padding: 40px 10px;
+  .title {
+    font-family: initial;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  .container {
+    .job-box {
+      @include mixin.ToVerticalAndHorizontalCenter();
+    }
+    .card-class {
+      border: 1px solid silver;
+      //   margin-bottom: 20px;
+    }
+  }
+}
