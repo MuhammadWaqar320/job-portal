@@ -1,2 +1,2 @@
-# invexuptrading
-Trading Web Platform for InveXup
+# job-portal-system
+Online job search web app
