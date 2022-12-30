@@ -26,17 +26,18 @@ const deleteCompanyByIdFun = async (req, res) => {
   );
   return constructResponse(res, responseData);
 };
-const updateCompanyByIdFun = async (req, res) => {
+const changeCompanyPassword = async (req, res) => {
   const responseData = await CompanyServiceObj.updateCompanyPasswordService(
     req.body,
     req.params.id
   );
   return constructResponse(res, responseData);
 };
+
 module.exports = {
+  changeCompanyPassword,
   createCompanyFun,
   getAllCompanyFun,
   getCompanyByIdFun,
   deleteCompanyByIdFun,
-  updateCompanyByIdFun,
 };

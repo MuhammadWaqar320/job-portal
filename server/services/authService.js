@@ -19,10 +19,11 @@ module.exports = class AuthService {
         dbResponse = await userRepoObj.getUserByEmail(email);
       } else if (Number(type) == 2) {
         dbResponse = await companyRepoObj.getCompanyByEmail(email);
-        dbResponse.dataValues.role = "company";
+        if (dbResponse) {
+          dbResponse.dataValues.role = "company";
+        }
       }
     }
-    console.log("===================", dbResponse);
     if (dbResponse && Object.keys(dbResponse).length) {
       const isMatchPassword = await bcrypt.compare(
         password,
@@ -41,14 +42,14 @@ module.exports = class AuthService {
       } else {
         return errorResponse(
           HTTP_STATUS.UNAUTHORIZED,
-          "sorry invalid credentials1",
+          "sorry invalid credentials",
           []
         );
       }
     } else {
       return errorResponse(
         HTTP_STATUS.UNAUTHORIZED,
-        "sorry invalid credentials",
+        "sorry invalid credentials something wrong",
         []
       );
     }

@@ -1,0 +1,6 @@
+@use "../../assets/sass/mixin" as m;
+@use "../../assets/sass/var" as v;
+.admin-section {
+  @include m.ToHorizontalCenter();
+  padding: 20px 0px;
+}

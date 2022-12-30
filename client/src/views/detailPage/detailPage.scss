@@ -1,3 +1,6 @@
+@use "../../assets/sass/mixin" as m;
+@use "../../assets/sass/var" as v;
+
 .detail-img {
   height: auto;
   width: 100%;
@@ -9,4 +12,19 @@
   font-weight: bold;
 }
 .right-detail-job {
+  border-left: 1px solid silver;
+}
+.leftBox {
+  @include m.ToVerticalAndHorizontalCenter();
+}
+.desc-class {
+  padding: 5px 40px 20px 40px;
+  @media (max-width: 800px) {
+    padding: 5px;
+  }
+}
+.social-icon{
+    @include m.ToHorizontalCenter();
+    width: 100%;
+
 }

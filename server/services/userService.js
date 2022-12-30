@@ -1,6 +1,7 @@
 const { HashPasswordUsingBcryptjs } = require("../utils/functions");
 const { errorResponse, successResponse } = require("../utils/functions");
 const { HTTP_STATUS } = require("../utils/constant");
+const bcrypt =require("bcryptjs")
 const userRepoObj = new (require("../data/repo/userRepo"))();
 module.exports = class UserService {
   async getAllUserService() {
@@ -35,6 +36,21 @@ module.exports = class UserService {
       return errorResponse(HTTP_STATUS.INTERNAL_SERVER_ERROR, error.message);
     }
   }
+  async changeAdminPasswordInfo(data, id) {
+    const { new_password, old_password } = data;
+    const { dataValues } = await userRepoObj.getUserById(id);
+    const isMatchPassword = await bcrypt.compare(
+      old_password,
+      dataValues.password
+    );
+    if (isMatchPassword) {
+      const password = await HashPasswordUsingBcryptjs(new_password);
+      const result = await userRepoObj.updateUser({ password: password }, id);
+      return successResponse(result, HTTP_STATUS.OK, "password updated");
+    } else {
+      return errorResponse(HTTP_STATUS.OK, "wrong password",{success:false});
+    }
+  }
   async createUserService(userData) {
     const hashedPassword = await HashPasswordUsingBcryptjs(userData.password);
     const newUser = {
@@ -43,7 +59,7 @@ module.exports = class UserService {
       password: hashedPassword,
       city: userData.city,
       role: userData.role,
-      phoneNumber: userData.phoneNumber,
+      phone_number: userData.phoneNumber,
     };
     try {
       const isExist = await userRepoObj.getUserByEmail(userData.email);

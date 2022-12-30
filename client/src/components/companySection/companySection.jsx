@@ -60,9 +60,14 @@ const CompanySection = () => {
               return (
                 <div
                   class="col-sm-3"
-                  style={{ marginBottom: "50px", fontFamily: "initial" }}
+                  style={{ marginBottom: "30px", fontFamily: "initial" }}
                 >
-                      <div style={ { border: "1px solid silver",marginBottom:"23px",padding:"10px" } }>
+                  <div
+                    style={{
+                      border: "1px solid silver",
+                      padding: "10px",
+                    }}
+                  >
                     <img src={item.logo} height="100px" width="100px" />
                     <h4>{item.name}</h4>
                   </div>

@@ -6,7 +6,9 @@ import swal from "sweetalert";
 import loginPic from "../../assets/images/loginPic.png";
 import { LoginApi } from "../../api/authApi";
 import { isAuthenticated } from "../../utils/functions";
+import { useNavigate } from "react-router-dom";
 const LoginForm = ({ hideModal }) => {
+  const navigate = useNavigate();
   const login_type = [
     { type: "Job Seeker/Admin", key: 1 },
     { type: "Company", key: 2 },
@@ -23,7 +25,16 @@ const LoginForm = ({ hideModal }) => {
     };
     const response = await LoginApi(payload);
     if (response.success) {
-      hideModal();
+      if (response.data.userInfo.role == "admin") {
+        hideModal();
+        navigate("/admin-dashboard");
+      } else if (response.data.userInfo.role == "company") {
+        hideModal();
+        navigate("/company-dashboard");
+      } else {
+        hideModal();
+      }
+      window.location.reload(false);
     } else if (!response.success) {
       swal({
         title: "Sorry",
@@ -90,7 +101,9 @@ const LoginForm = ({ hideModal }) => {
             >
               Login
             </Button>
-            <Button style={{background:"red"}} onClick={hideModal}>Cancel</Button>
+            <Button style={{ background: "red" }} onClick={hideModal}>
+              Cancel
+            </Button>
           </Form>
         </div>
       </div>

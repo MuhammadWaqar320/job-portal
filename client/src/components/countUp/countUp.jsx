@@ -44,7 +44,7 @@ const CdCounter = () => {
         >
           <span style={{ fontSize: "25px" }}>
             <span style={{ fontWeight: "bold" }}>+</span>
-            <CountUp end={300} duration={130}></CountUp>
+            <CountUp end={500} duration={130}></CountUp>
           </span>
           <span>Jobs</span>
         </div>
@@ -65,7 +65,7 @@ const CdCounter = () => {
         >
           <span style={{ fontSize: "25px" }}>
             <span style={{ fontWeight: "bold" }}>+</span>
-            <CountUp end={400} duration={130}></CountUp>
+            <CountUp end={500} duration={130}></CountUp>
           </span>
           <span>Users</span>
         </div>
@@ -86,7 +86,7 @@ const CdCounter = () => {
         >
           <span style={{ fontSize: "25px" }}>
             <span style={{ fontWeight: "bold" }}>+</span>
-            <CountUp end={600} duration={130}></CountUp>
+            <CountUp end={500} duration={130}></CountUp>
           </span>
           <span>Applications</span>
         </div>
@@ -106,7 +106,7 @@ const CdCounter = () => {
         >
           <span style={{ fontSize: "25px" }}>
             <span style={{ fontWeight: "bold" }}>+</span>
-            <CountUp end={800} duration={130}></CountUp>
+            <CountUp end={500} duration={130}></CountUp>
           </span>
           <span>Companies</span>
         </div>

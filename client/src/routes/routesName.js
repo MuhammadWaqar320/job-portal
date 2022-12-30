@@ -23,4 +23,16 @@ export const routeNameObj = {
   detailPage: {
     route: "/detail/:id",
   },
+  apply: {
+    route:"/apply/:jobId/:jobSeekerId"
+  },
+  companyDashboard: {
+    route:"/company-dashboard"
+  },
+  adminDashboard: {
+    route:"/admin-dashboard"
+  },
+  search: {
+    route:"/search/:title"
+  }
 };

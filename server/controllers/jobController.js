@@ -17,7 +17,7 @@ const getJobByIdFun = async (req, res) => {
 };
 const searchJobByIdFun = async (req, res) => {
   const responseData = await JobServiceObj.searchJobByTitleService(
-    req.query.title
+    req.params.title
   );
   return constructResponse(res, responseData);
 };

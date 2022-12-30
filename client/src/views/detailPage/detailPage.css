@@ -8,4 +8,31 @@
   font-family: initial;
   font-size: 30px;
   font-weight: bold;
+}
+
+.right-detail-job {
+  border-left: 1px solid silver;
+}
+
+.leftBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc-class {
+  padding: 5px 40px 20px 40px;
+}
+@media (max-width: 800px) {
+  .desc-class {
+    padding: 5px;
+  }
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }/*# sourceMappingURL=detailPage.css.map */

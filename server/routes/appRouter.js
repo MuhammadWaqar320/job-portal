@@ -7,6 +7,7 @@ const {
   getAllUserFun,
   getUserByIdFun,
   deleteUserByIdFun,
+  changeAdminPassword
 } = require("../controllers/userController");
 const {
   createJobApplicationFun,
@@ -25,7 +26,7 @@ const {
   getAllCompanyFun,
   getCompanyByIdFun,
   deleteCompanyByIdFun,
-  updateCompanyByIdFun,
+  changeCompanyPassword,
 } = require("../controllers/companyController");
 const { userLoginFun } = require("../controllers/authController");
 const { validateRequestMiddleWare } = require("../middlewares/validateRequest");
@@ -63,20 +64,23 @@ router.get("/user/getAll", getAllUserFun);
 router.get("/user/getById/:id", getUserByIdFun);
 router.delete("/user/delete/:id", deleteUserByIdFun);
 router.post("/user/login", userLoginFun);
+router.put("/admin/change/password/:id", changeAdminPassword); // have to change
+
 // job routes
 router.post("/job/create", thumbnailUpload.single("picture"), createJobFun);
 router.get("/job/getAll", getAllJobFun);
 router.get("/job/getById/:id", getJobByIdFun);
 router.delete("/job/delete/:id", deleteJobByIdFun);
 router.put("/job/update/:id", updateJobByIdFun);
-router.get("/job/search", searchJobByIdFun);
+router.get("/job/search/:title", searchJobByIdFun);
 
 // company routes
 router.post("/company/create", logoUpload.single("logo"), createCompanyFun);
 router.get("/company/getAll", getAllCompanyFun);
 router.get("/company/getById/:id", getCompanyByIdFun);
 router.delete("/company/delete/:id", deleteCompanyByIdFun);
-router.put("/company/update/:id", updateCompanyByIdFun);
+router.put("/company/change/password/:id", changeCompanyPassword);  // have to change
+
 // job application
 router.post(
   "/application/create",

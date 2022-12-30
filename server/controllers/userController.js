@@ -16,7 +16,15 @@ const deleteUserByIdFun = async (req, res) => {
   const responseData = await UserServiceObj.deleteUserByIdService(req.params.id);
   return constructResponse(res, responseData);
 };
+const changeAdminPassword = async (req, res) => {
+  const responseData = await UserServiceObj.changeAdminPasswordInfo(
+    req.body,
+    req.params.id
+  );
+  return constructResponse(res, responseData);
+};
 module.exports = {
+  changeAdminPassword,
   createUserFun,
   getAllUserFun,
   getUserByIdFun,

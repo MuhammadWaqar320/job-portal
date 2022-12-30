@@ -7,6 +7,10 @@ import RegisterUser from "../components/registerUser/registerUser";
 import AboutUs from "../views/about/about";
 import AllJobs from "../views/allJobs/jobs";
 import DetailPage from "../views/detailPage/detailPage";
+import ApplyForJob from "./../views/applyForJob/applyForJob";
+import CompanyDashboard from "../views/companyDashboard/companyDashboard";
+import AdminDashboard from "../views/adminDashboard/adminDashboard";
+import Search from "../components/search/search";
 const Router = () => {
   return (
     <>
@@ -40,6 +44,26 @@ const Router = () => {
             exact
             path={routeNameObj.detailPage.route}
             element={<DetailPage />}
+          />
+          <Route
+            exact
+            path={routeNameObj.companyDashboard.route}
+            element={<CompanyDashboard />}
+          />
+          <Route
+            exact
+            path={routeNameObj.search.route}
+            element={<Search />}
+          />
+          <Route
+            exact
+            path={routeNameObj.adminDashboard.route}
+            element={<AdminDashboard />}
+          />
+          <Route
+            exact
+            path={routeNameObj.apply.route}
+            element={<ApplyForJob />}
           />
         </Routes>
       </BrowserRouter>

@@ -13,6 +13,9 @@ module.exports = class UserRepo {
   getUserByEmail(email) {
     return User.findOne({ where: { email: email } });
   }
+  updateUser(newData, id) {
+    return User.update(newData, { where: { id: id } });
+  }
   deleteUserById(id) {
     return User.destroy({
       where: {

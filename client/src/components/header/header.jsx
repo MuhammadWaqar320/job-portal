@@ -8,11 +8,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../assets/images/logo1.png";
 import { Link } from "react-router-dom";
+import { isAuthenticated, logOut } from "../../utils/functions";
 import "./header.css";
 import Login from "../login/login";
 const Header = () => {
   const [modalShow, setModalShow] = React.useState(false);
-
   return (
     <Navbar expand="lg" className="nav-bar">
       <Container fluid className="nav-bar-container">
@@ -44,42 +44,59 @@ const Header = () => {
               </Link>
             </Nav.Link>
           </Nav>
-          <Button className="nav-login-btn" onClick={() => setModalShow(true)}>
-            Login
-          </Button>
-          <Dropdown className="nav-bar-dropdown">
-            <Dropdown.Toggle
-              variant="success"
-              id="dropdown-basic"
-              className="nav-bar-dropdown-btn"
-            >
-              Register As
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="nav-bar-dropdown-menu">
-              <Dropdown.Item
-                href="#/action-1"
-                className="nav-bar-dropdown-menu-item"
+          {Boolean(isAuthenticated()) ? (
+            <>
+              <span style={{marginRight:"15px",textTransform:"capitalize",fontSize:"18px",fontWeight:"bold"}}>Hi, {localStorage.getItem("name")}</span>
+              <a href="/">
+                <Button className="nav-login-btn" onClick={() => logOut()}>
+                  Logout
+                </Button>
+              </a>
+            </>
+          ) : (
+            <>
+              <Button
+                className="nav-login-btn"
+                onClick={() => setModalShow(true)}
               >
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to="/registerUser"
+                Login
+              </Button>
+              <Dropdown className="nav-bar-dropdown">
+                <Dropdown.Toggle
+                  variant="success"
+                  id="dropdown-basic"
+                  className="nav-bar-dropdown-btn"
                 >
-                  {" "}
-                  A User
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-2">
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to="/registerCompany"
-                >
-                  {" "}
-                  A Company
-                </Link>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Login show={modalShow} onHide={() => setModalShow(false)} />
+                  Register As
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="nav-bar-dropdown-menu">
+                  <Dropdown.Item
+                    href="#/action-1"
+                    className="nav-bar-dropdown-menu-item"
+                  >
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to="/registerUser"
+                    >
+                      {" "}
+                      A User
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to="/registerCompany"
+                    >
+                      {" "}
+                      A Company
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Login show={modalShow} onHide={() => setModalShow(false)} />
+            </>
+          )}
+        
         </Navbar.Collapse>
       </Container>
     </Navbar>

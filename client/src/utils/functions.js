@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 export const isAuthenticated = () => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -9,3 +10,4 @@ export const isAuthenticated = () => {
 export const logOut = () => {
   localStorage.clear();
 };
+
