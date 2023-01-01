@@ -23,8 +23,10 @@ const ApplyForm = () => {
   const [postcode, setPostcode] = useState("");
   const [cnic, setCnic] = useState("");
   const { jobId, jobSeekerId } = useParams();
+  const [email, setEmail ] = useState("");
   const navigate = useNavigate();
   const registerApplication = async (e) => {
+    console.log("job id", jobSeekerId);
     e.preventDefault();
     let formData = new FormData();
     formData.append("education", education);
@@ -37,9 +39,11 @@ const ApplyForm = () => {
     formData.append("dob", dob);
     formData.append("gender", gender);
     formData.append("postcode", postcode);
-    formData.append("jobSeeKerId", Number(jobSeekerId));
-    formData.append("jobId", Number(jobId));
+    formData.append("id", jobSeekerId);
+    formData.append("jobId", jobId);
     formData.append("cnic", cnic);
+    formData.append("email", email);
+
     const response = await applyForJobIntoDb(formData);
     if (response.success) {
       swal({
@@ -47,7 +51,7 @@ const ApplyForm = () => {
         text: "You have been applied successfully",
         icon: "success",
       }).then(() => {
-        navigate("/");
+        // navigate("/");
       });
     } else {
       swal({
@@ -68,6 +72,19 @@ const ApplyForm = () => {
               <h4 className="headTitle">Hi, Apply For Job</h4>
             </div>
             <hr style={{ marginBottom: "40px" }}></hr>
+            <Form.Group className="mb-3" controlId="formGridAddress234324">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter company email where you will apply"
+                minLength="3"
+                maxLength="200"
+                required
+              />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formGridAddress1">
               <Form.Label>Address:</Form.Label>
               <Form.Control

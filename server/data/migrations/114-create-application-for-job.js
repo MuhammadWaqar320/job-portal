@@ -2,41 +2,46 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("companies", {
+    await queryInterface.createTable("applicationforjobs", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
-      },
-      logo: {
-        type: Sequelize.STRING,
-      },
-      no_of_department: {
-        type: Sequelize.INTEGER,
-      },
-      description: {
-        type: Sequelize.STRING,
-      },
-      registeredNo: {
-        type: Sequelize.STRING,
-      },
       address: {
         type: Sequelize.STRING,
       },
-      website: {
+      education: {
         type: Sequelize.STRING,
       },
-      phoneNo: {
+      experience: {
         type: Sequelize.STRING,
       },
-      email: {
+      expectedSalary: {
         type: Sequelize.STRING,
       },
-      password: {
+      jobSeekerId: {
+        type: Sequelize.INTEGER,
+        references: { model: "users", key: "id" },
+      },
+      jobId: {
+        type: Sequelize.INTEGER,
+        references: { model: "jobs", key: "id" },
+      },
+      cv: {
+        type: Sequelize.STRING,
+      },
+      specialization: {
+        type: Sequelize.STRING,
+      },
+      comment: {
+        type: Sequelize.TEXT("long"),
+      },
+      dob: { type: Sequelize.DATEONLY },
+      gender: { type: Sequelize.STRING },
+      postcode: { type: Sequelize.STRING },
+      cnic: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -50,6 +55,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("companies");
+    await queryInterface.dropTable("applicationforjobs");
   },
 };

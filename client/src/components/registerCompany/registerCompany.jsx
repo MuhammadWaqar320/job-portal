@@ -23,7 +23,6 @@ const RegisterCompany = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const registerCompany = async (e) => {
-    console.log("file", logo);
     e.preventDefault();
     let formData = new FormData();
     formData.append("name", name);
@@ -150,7 +149,6 @@ const RegisterCompany = () => {
                 type="text"
                 value={description}
                 minLength="3"
-                maxLength="20"
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter description"
                 required

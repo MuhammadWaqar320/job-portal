@@ -46,7 +46,16 @@ const Header = () => {
           </Nav>
           {Boolean(isAuthenticated()) ? (
             <>
-              <span style={{marginRight:"15px",textTransform:"capitalize",fontSize:"18px",fontWeight:"bold"}}>Hi, {localStorage.getItem("name")}</span>
+              <span
+                style={{
+                  marginRight: "15px",
+                  textTransform: "capitalize",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                }}
+              >
+                Hi, {localStorage.getItem("name")}
+              </span>
               <a href="/">
                 <Button className="nav-login-btn" onClick={() => logOut()}>
                   Logout
@@ -96,7 +105,6 @@ const Header = () => {
               <Login show={modalShow} onHide={() => setModalShow(false)} />
             </>
           )}
-        
         </Navbar.Collapse>
       </Container>
     </Navbar>

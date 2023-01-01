@@ -34,11 +34,11 @@ function JobComponent() {
                 style={{ marginBottom: "24px" }}
               >
                 <Card style={{ border: "1px solid silver" }}>
-                  <Card.Img variant="top" src={img1} />
+                  <Card.Img variant="top" src={job.picture} height="300px" />
                   <Card.Body>
                     <Card.Title>{job.title}</Card.Title>
                     <Card.Text>{job.description.slice(0, 170)} ....</Card.Text>
-                    <Link to={`/detail/${job.id}`} >
+                    <Link to={`/detail/${job.id}`}>
                       <Button variant="outline-secondary">View More</Button>{" "}
                     </Link>
                   </Card.Body>

@@ -29,7 +29,7 @@ function ChangePassword({ id }) {
     const response = await changePassword(payload, id);
     if (response.data.success) {
       successMessage("Password has been updated");
-    } else if (!response.data.success) {
+    } else if (!(response.success)) {
       errorMessage("Please enter correct old password");
     } else {
       errorMessage("Something is wrong");

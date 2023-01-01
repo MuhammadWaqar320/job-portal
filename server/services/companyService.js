@@ -47,7 +47,7 @@ module.exports = class CompanyService {
       description: CompanyData.description,
       no_of_department: CompanyData.no_of_department,
       registeredNo: CompanyData.registeredNo,
-      address: CompanyData.website,
+      address: CompanyData.address,
       phoneNo: CompanyData.phoneNo,
       email: CompanyData.email,
       password: hashedPassword,
@@ -96,7 +96,7 @@ module.exports = class CompanyService {
       );
       return successResponse(result, HTTP_STATUS.OK, "password updated");
     } else {
-      return errorResponse(HTTP_STATUS.NOT_FOUND, "wrong password");
+      return errorResponse(HTTP_STATUS.OK, "wrong password");
     }
   }
 };

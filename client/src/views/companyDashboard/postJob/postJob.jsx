@@ -21,7 +21,7 @@ const PostJob = ({ id }) => {
   const [salary, setSalary] = useState("");
   const [designation, setDesignation] = useState("");
   const [experience, setExperience] = useState("");
-  const [vecancies, setCnic] = useState("");
+  const [vecancies, setVecancies] = useState("");
   const navigate = useNavigate();
   const registerApplication = async (e) => {
     e.preventDefault();
@@ -60,10 +60,7 @@ const PostJob = ({ id }) => {
     <>
       <div className="row container post-class">
         <div className="col-sm-3"></div>
-        <div
-          className="col-sm-6 shadow-lg p-3 mb-5 bg-white rounded"
-        
-        >
+        <div className="col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
           <Form className="register-form-class" onSubmit={registerApplication}>
             <div>
               <h4 className="headTitle">Hi, Post New Job</h4>
@@ -78,7 +75,6 @@ const PostJob = ({ id }) => {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter job title"
                 minLength="3"
-                maxLength="20"
                 required
               />
             </Form.Group>
@@ -170,6 +166,16 @@ const PostJob = ({ id }) => {
                 value={designation}
                 onChange={(e) => setDesignation(e.target.value)}
                 placeholder="Enter designation"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formGridAddress2">
+              <Form.Label>Vecancies:</Form.Label>
+              <Form.Control
+                type="number"
+                value={vecancies}
+                onChange={(e) => setVecancies(e.target.value)}
+                placeholder="Enter no of vecancies"
                 required
               />
             </Form.Group>

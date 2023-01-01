@@ -3,7 +3,7 @@ const { HTTP_STATUS } = require("../utils/constant");
 const JobApplicationRepoObj =
   new (require("../data/repo/jobApplicationRepo"))();
 const { HashPasswordUsingBcryptjs } = require("../utils/functions");
-const {transporter } = require("../utils/constant");
+const { transporter } = require("../utils/constant");
 
 module.exports = class JobApplicationService {
   async getAllJobApplicationService() {
@@ -14,12 +14,14 @@ module.exports = class JobApplicationService {
       return errorResponse(HTTP_STATUS.INTERNAL_SERVER_ERROR, error.message);
     }
   }
-  async createJobApplicationService(JobApplicationData, cvName,email) {
+  async createJobApplicationService(JobApplicationData, cvName) {
+    const { id,email } = JobApplicationData;
+    const seekerId = Number(id)  
     const newJobApplication = {
       address: JobApplicationData.address,
       education: JobApplicationData.education,
       cv: cvName,
-      jobSeekerId: JobApplicationData.jobSeekerId,
+      jobSeekerId: seekerId,
       experience: JobApplicationData.experience,
       expectedSalary: JobApplicationData.expectedSalary,
       jobId: JobApplicationData.jobId,

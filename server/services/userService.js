@@ -59,7 +59,7 @@ module.exports = class UserService {
       password: hashedPassword,
       city: userData.city,
       role: userData.role,
-      phone_number: userData.phoneNumber,
+      phone_number: userData.phone_number,
     };
     try {
       const isExist = await userRepoObj.getUserByEmail(userData.email);

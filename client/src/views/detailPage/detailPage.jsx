@@ -163,7 +163,6 @@ function DetailPage() {
           </div>
         </Paper>
       </div>
-      <Footer />
     </div>
   );
 }

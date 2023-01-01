@@ -9,7 +9,6 @@ const createJobApplicationFun = async (req, res) => {
     await JobApplicationServiceObj.createJobApplicationService(
       req.body,
       fileUrl,
-      req.query.email
     );
   return constructResponse(res, responseData);
 };
